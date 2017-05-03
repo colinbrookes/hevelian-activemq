@@ -1,0 +1,25 @@
+
+.calcHeader {
+	color: #a0a0a0;
+	font-size: 20px;
+	line-height: 38px;
+	border-bottom: 1px solid #a0a0a0; 
+	margin-bottom: 40px; 
+	padding-bottom: 0px;
+}
+
+.padFix{
+    padding-top:8px;
+}
+
+.addMargin {
+	margin-bottom: 6px;
+}
+
+.hevelian-pale {
+	color: #a0a0a0;
+}
+
+.hevelian-panel-body {
+	overflow: auto;	
+}
