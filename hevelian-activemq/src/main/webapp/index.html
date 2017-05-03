@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Hevelian ActiveMQ</title>
+	<link rel="stylesheet" href="scripts/bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="scripts/bootstrap/css/bootstrap-theme.min.css" />
+	<link rel="stylesheet" href="scripts/select/css/bootstrap-select.min.css" />
+	<link rel="stylesheet" href="scripts/dates/bootstrap-datetimepicker.css" />
+	<link rel="stylesheet" href="css/tcm.css" />
+	
+	<script src="scripts/jquery/jquery-1.11.2.min.js"></script>
+	<script src="scripts/bootstrap/js/bootstrap.min.js"></script>
+	<script src="scripts/select/js/bootstrap-select.min.js"></script>
+	<script src="scripts/dates/moment.js"></script>
+	<script src="scripts/dates/bootstrap-datetimepicker.min.js"></script>
+	<script src="scripts/chartjs/Chart.js"></script>
+	
+	<script src="scripts/validator.js"></script>
+	<script src="scripts/ajax.js"></script>
+	<script src="scripts/hevelian-activemq.js"></script>
+</head>
+
+<body id="main" onLoad="loadQueues()">
+	<div class="container">
+
+		<div id="container_contacts" class="container" style="width: 100%; overflow: hidden;">
+			<br /> <br /> <br /> <br />
+			<button type="button" class="btn btn-warning btn-md" style="margin-bottom: 4px;" onClick="_handlerClickAddQueueButton()">New Queue</button>
+			<button id="btnDeleteQueue" type="button" style="margin-bottom: 4px;" class="btn btn-danger btn-md disabled" onClick="DeleteQueue()">Delete Queue</button>
+			<button id="btnPurgeQueue" type="button" style="margin-bottom: 4px;" class="btn btn-danger btn-md disabled" onClick="PurgeQueue()">Purge Queue</button>
+
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+
+					<div class="row">
+						<div class="col-sm-12">
+							<h3 class="panel-title">
+								Queues <span id="queueCount" class="badge">0</span>
+							</h3>
+						</div>
+					</div>
+
+				</div>
+				<div id="panelBodyContacts" class="panel-body hevelian-panel-body" style="padding-top: 0px;">
+					<div class="row">
+						<div class="col-sm-6">
+							<table class="table table-striped table-condensed table-hover">
+								<thead>
+									<tr>
+										<th>Name</th>
+										<th>Depth</th>
+										<th>Enq.</th>
+										<th>Deq.</th>
+										<th>Inf.</th>
+										<th>Dis.</th>
+									</tr>
+								</thead>
+								<tbody id="tbodyContacts">
+								</tbody>
+							</table>
+						</div>
+						<div class="col-sm-6">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>
