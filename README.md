@@ -12,9 +12,9 @@ modify Tomcat context.xml to include one Environment parameter "hevelian.apachem
 In the home folder create three folders, "conf" and "data". 
 In "conf" folder create a file "hevelian.properties" and add the following to the file:
 
-broker.adapter.store=/hevelian/activemq/data
-broker.name=Hevelian
-broker.connector=tcp://localhost:61616
-broker.useJmx=true
+broker.adapter.store=/hevelian/activemq/data<br/>
+broker.name=Hevelian<br/>
+broker.connector=tcp://localhost:61616<br/>
+broker.useJmx=true<br/>
 
 Change the broker.adapter.store to point to the folder you created of course :)
