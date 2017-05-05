@@ -39,11 +39,4 @@
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>activemq</name>
-			<type>2</type>
-			<location>/Users/cb/Development/hevelian/activemq</location>
-		</link>
-	</linkedResources>
 </projectDescription>

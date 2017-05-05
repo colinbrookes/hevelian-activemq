@@ -15,13 +15,16 @@ import org.apache.activemq.usage.SystemUsage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.hevelian.activemq.Configuration;
+
 public class Loader extends HttpServlet {
 
 	/**
 	 * serialVersionUID for serialization
 	 */
 	private static final long serialVersionUID = -8289081958495740549L;
-	private static final String adapterStore = "/Users/cb/Development/hevelian/activemq/data";
+	private static final String contextName = "hevelian.activemq.home";
+	private Configuration configuration = new Configuration(contextName);
 
 	private BrokerService broker;
 
@@ -36,12 +39,12 @@ public class Loader extends HttpServlet {
 		try {
 			
 			PersistenceAdapter adapter = new KahaDBPersistenceAdapter();
-			adapter.setDirectory(new File(adapterStore));
+			adapter.setDirectory(new File(configuration.getProperty("broker.adapter.store")));
 			
 			broker = new BrokerService();
-			broker.addConnector("tcp://localhost:61616");
-			broker.setUseJmx(true);
-			broker.setBrokerName("Hevelian");
+			broker.addConnector(configuration.getProperty("broker.connector"));
+			broker.setUseJmx(Boolean.parseBoolean(configuration.getProperty("broker.useJmx")));
+			broker.setBrokerName(configuration.getProperty("broker.name"));
 			broker.setPersistenceAdapter(adapter);
 			
 			broker.start();
