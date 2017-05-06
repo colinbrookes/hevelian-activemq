@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Hevelian/hevelian-activemq.svg?branch=master)](https://travis-ci.org/Hevelian/hevelian-activemq)
+
 # hevelian-activemq
 
 Enterprise class software for the rest of us.
