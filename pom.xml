@@ -1,23 +1,36 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.hevelian</groupId>
-  <artifactId>com.hevelian.activemq</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
-  <name>ActiveMQ in Tomcat</name>
-  <description>Runs ActiveMQ embedded in WAR file in Tomcat</description>
-  
-  	<properties>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.hevelian</groupId>
+	<artifactId>com.hevelian.activemq</artifactId>
+	<version>0.0.2-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>ActiveMQ Broker in Tomcat</name>
+	<description>Runs ActiveMQ Broker embedded in WAR file in Tomcat</description>
+
+	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<product.name>Hevelian ActiveMQ</product.name>
-		<maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
-
-		<spring.version>4.2.6.RELEASE</spring.version>
-		<spring-security.version>4.1.1.RELEASE</spring-security.version>
-		<spring.data.version>1.9.4.RELEASE</spring.data.version>
-		<log4j.version>2.5</log4j.version>		
 	</properties>
-  
+
+	<dependencies>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.activemq/activemq-broker -->
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-broker</artifactId>
+			<version>5.14.5</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
 	<build>
 		<finalName>hevelian-activemq</finalName>
 		<plugins>
@@ -33,58 +46,4 @@
 		</plugins>
 	</build>
 
-  <dependencies>
-    	<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>3.1.0</version>
-			<scope>provided</scope>
-		</dependency>
-		
-	<!-- https://mvnrepository.com/artifact/org.apache.activemq/activemq-broker -->
-		<dependency>
-		    <groupId>org.apache.activemq</groupId>
-		    <artifactId>activemq-broker</artifactId>
-		    <version>5.14.5</version>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.apache.activemq/activemq-kahadb-store -->
-		<dependency>
-		    <groupId>org.apache.activemq</groupId>
-		    <artifactId>activemq-kahadb-store</artifactId>
-		    <version>5.14.5</version>
-		</dependency>
-
-		
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-core</artifactId>
-			<version>2.7</version>
-		</dependency>	
-
-		<!-- Spring Stuff -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-web</artifactId>
-			<version>${spring-security.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-config</artifactId>
-			<version>${spring-security.version}</version>
-		</dependency>
-		
-		<!-- logging -->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
-
-  </dependencies>
 </project>
