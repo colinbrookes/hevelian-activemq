@@ -17,20 +17,3 @@ More info at http://activemq.apache.org/xml-configuration.html
 NOTE: the set of libraries depends on the type and content of configuration file. Only several libraries are mandatory. List to be provided soon.
 
 4. Edit the broker configuration file. Remove ws transport connector, import of jetty.xml. In case the activemq.conf placeholder is used - set it's value via a system property.
-
-
-
-
-modify Tomcat context.xml to include one Environment parameter "hevelian.apachemq.home", for example:
-
-&lt;Environment name="hevelian.apachemq.home" value="/hevelian/apachemq" type="java.lang.String"/&gt;
-
-In the home folder create three folders, "conf" and "data". 
-In "conf" folder create a file "hevelian.properties" and add the following to the file:
-
-broker.adapter.store=/hevelian/activemq/data<br/>
-broker.name=Hevelian<br/>
-broker.connector=tcp://localhost:61616<br/>
-broker.useJmx=true<br/>
-
-Change the broker.adapter.store to point to the folder you created of course :)
