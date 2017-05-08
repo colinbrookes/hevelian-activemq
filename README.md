@@ -2,6 +2,8 @@
 
 # hevelian-activemq
 
+Instructions should be updated according to the latest changes.
+
 Enterprise class software for the rest of us.
 
 Run Apache ActiveMQ as a WAR deployment in Tomcat and reduce the number of processes you need to start up.
