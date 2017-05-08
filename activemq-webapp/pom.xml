@@ -1,0 +1,23 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>activemq-webapp</artifactId>
+	<packaging>war</packaging>
+	<name>ActiveMQ Broker in Tomcat - WebApp</name>
+	<description>ActiveMQ Broker embedded in WAR file in Tomcat</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-broker</artifactId>
+			<version>${activemq.version}</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<parent>
+		<groupId>com.hevelian.activemq</groupId>
+		<artifactId>activemq-parent</artifactId>
+		<version>0.0.3-SNAPSHOT</version>
+	</parent>
+</project>
