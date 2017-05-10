@@ -7,11 +7,50 @@
 	<description>ActiveMQ Broker embedded in WAR file in Tomcat</description>
 
 	<dependencies>
+		<!-- Locals -->
+		<dependency>
+			<groupId>com.hevelian.activemq</groupId>
+			<artifactId>activemq-core</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<!-- ActiveMQ -->
 		<dependency>
 			<groupId>org.apache.activemq</groupId>
 			<artifactId>activemq-broker</artifactId>
 			<version>${activemq.version}</version>
-			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-spring</artifactId>
+			<version>${activemq.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-kahadb-store</artifactId>
+			<version>${activemq.version}</version>
+		</dependency>
+
+		<!-- Spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<!-- Connectors -->
+		<!-- Connectors: TCP -->
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-amqp</artifactId>
+			<version>${activemq.version}</version>
+		</dependency>
+
+		<!-- Logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${slf4j.version}</version>
 		</dependency>
 	</dependencies>
 

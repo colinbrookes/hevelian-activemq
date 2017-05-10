@@ -12,6 +12,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<product.name>Hevelian ActiveMQ</product.name>
 		<activemq.version>5.14.5</activemq.version>
+		<slf4j.version>1.7.13</slf4j.version>
+		<spring.version>4.1.9.RELEASE</spring.version>
 	</properties>
 
 	<dependencies>
@@ -24,7 +26,7 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>1.7.13</version>
+			<version>${slf4j.version}</version>
 		</dependency>
 	</dependencies>
 
