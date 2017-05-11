@@ -4,6 +4,11 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	version="3.0">
 
+	<context-param>
+		<param-name>activemq.conf.brokerURI</param-name>
+		<param-value>xbean:classpath:activemq.xml</param-value>
+	</context-param>
+
 	<display-name>hevelian-activemq</display-name>
 	<listener>
 		<listener-class>com.hevelian.activemq.BrokerInitializer</listener-class>

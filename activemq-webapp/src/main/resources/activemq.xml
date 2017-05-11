@@ -9,13 +9,27 @@
 	http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 
+
+	<bean id="defaults"
+		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="properties">
+			<props>
+				<prop key="activemq.data">${user.home}/hevelian/activemq/data</prop>
+				<prop key="activemq.broker.name">Hevelian</prop>
+				<prop key="activemq.broker.useJMX">true</prop>
+				<prop key="activemq.broker.tcp.port">61616</prop>
+			</props>
+		</property>
+	</bean>
+
 	<!-- Allows us to use system properties, JNDI properties, init parameters, 
 		etc. as variables in this configuration file -->
-	<context:property-placeholder />
+	<context:property-placeholder
+		properties-ref="defaults" />
 
 	<!-- The <broker> element is used to configure the ActiveMQ broker. -->
 	<broker xmlns="http://activemq.apache.org/schema/core"
-		brokerName="localhost" dataDirectory="${activemq.data}">
+		brokerName="${activemq.broker.name}" dataDirectory="${activemq.data}">
 
 		<destinationPolicy>
 			<policyMap>
@@ -38,7 +52,7 @@
 			in JMX. By default, ActiveMQ uses the MBean server that is started by the 
 			JVM. For more information, see: http://activemq.apache.org/jmx.html -->
 		<managementContext>
-			<managementContext createConnector="false" />
+			<managementContext createConnector="${activemq.broker.useJMX}" />
 		</managementContext>
 
 		<!-- Configure message persistence for the broker. The default persistence 
@@ -72,7 +86,7 @@
 			<!-- DOS protection, limit concurrent connections to 1000 and frame size 
 				to 100MB -->
 			<transportConnector name="openwire"
-				uri="tcp://0.0.0.0:61616?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600" />
+				uri="tcp://0.0.0.0:${activemq.broker.tcp.port}?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600" />
 		</transportConnectors>
 
 		<!-- destroy the spring context on shutdown. Closes XBeanBrokerFactory. -->
