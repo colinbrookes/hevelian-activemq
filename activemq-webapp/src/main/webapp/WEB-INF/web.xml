@@ -9,8 +9,16 @@
 		<param-value>xbean:classpath:activemq.xml</param-value>
 	</context-param>
 
+	<context-param>
+		<param-name>hevelian.config.path</param-name>
+		<param-value>classpath:defaults.properties</param-value>
+	</context-param>
+
 	<display-name>hevelian-activemq</display-name>
 	<listener>
-		<listener-class>com.hevelian.activemq.BrokerInitializer</listener-class>
+		<listener-class>com.hevelian.activemq.servlet.ServletContextHolderInitializer</listener-class>
+	</listener>
+	<listener>
+		<listener-class>com.hevelian.activemq.WebBrokerInitializerImpl</listener-class>
 	</listener>
 </web-app>

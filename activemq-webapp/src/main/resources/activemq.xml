@@ -9,24 +9,9 @@
 	http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 
-
-	<bean id="defaults"
-		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-		<property name="properties">
-			<props>
-				<prop key="activemq.data">${user.home}/hevelian/activemq/data</prop>
-				<prop key="activemq.broker.name">Hevelian</prop>
-				<prop key="activemq.broker.useJmx">true</prop>
-				<prop key="activemq.broker.jmx.port">1099</prop>
-				<prop key="activemq.broker.tcp.port">61616</prop>
-			</props>
-		</property>
-	</bean>
-
 	<!-- Allows us to use system properties, JNDI properties, init parameters, 
 		etc. as variables in this configuration file -->
-	<context:property-placeholder
-		properties-ref="defaults" />
+	<context:property-placeholder location="${hevelian.config.path}" />
 
 	<!-- The <broker> element is used to configure the ActiveMQ broker. -->
 	<broker xmlns="http://activemq.apache.org/schema/core"
