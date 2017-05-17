@@ -11,10 +11,10 @@ import org.springframework.beans.FatalBeanException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.io.Resource;
-import org.springframework.web.context.support.StandardServletEnvironment;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import com.hevelian.activemq.servlet.ServletContextHolder;
+import com.hevelian.activemq.support.ReversePropertySourcesStandardServletEnvironment;
 
 public class WebXBeanBrokerFactory extends XBeanBrokerFactory {
 	private static final transient Logger LOG = LoggerFactory.getLogger(WebXBeanBrokerFactory.class);
@@ -26,7 +26,7 @@ public class WebXBeanBrokerFactory extends XBeanBrokerFactory {
 			return new ResourceXmlApplicationContext(resource) {
 				@Override
 				protected ConfigurableEnvironment createEnvironment() {
-					return new StandardServletEnvironment();
+					return new ReversePropertySourcesStandardServletEnvironment();
 				}
 
 				@Override
