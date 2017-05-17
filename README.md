@@ -2,11 +2,22 @@
 
 # hevelian-activemq
 
-Instructions should be updated according to the latest changes.
-
 Enterprise class software for the rest of us.
 
 Run Apache ActiveMQ as a WAR deployment in Tomcat and reduce the number of processes you need to start up.
+
+Build the activemq-webapp module as a war. Deploy it to Tomcat and run! The ActiveMQ broker will be started with default configuration:
+activemq.data            = ${user.home}/hevelian/activemq/data
+activemq.broker.name     = Hevelian
+activemq.broker.useJmx   = true
+activemq.broker.jmx.port = 1099
+activemq.broker.tcp.port = 61616
+
+To overwrite the properties - point the Broker to the properties file using JNDI or system property "hevelian.config.path". Context init param could be used as well in the global web.xml.
+Sample: -Dhevelian.config.path=/path/to/hevelian.properties
+
+
+//TODO - next are the previous instructions for super advanced usage. Part of it should stay. Will be revisited soon.
 
 To run:
 1. Set the location to broker configuration file. Sample: -Dactivemq.conf.brokerURI=xbean:file:///Users/myuser/activemq/conf/activemq.xml
