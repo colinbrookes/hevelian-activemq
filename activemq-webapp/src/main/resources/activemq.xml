@@ -10,8 +10,12 @@
 	http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 
 	<!-- Allows us to use system properties, JNDI properties, init parameters, 
-		etc. as variables in this configuration file -->
-	<context:property-placeholder location="${hevelian.config.path}" />
+		etc. as variables in this configuration file. It reads default properties 
+		and the ones from the specified location hevelian.config.path. By default 
+		the hevelian.config.path points to default properties as well but can be 
+		overridden by user. If the path does not exist - an exception will be thrown. -->
+	<context:property-placeholder
+		location="classpath:defaults.properties, ${hevelian.config.path}" />
 
 	<!-- The <broker> element is used to configure the ActiveMQ broker. -->
 	<broker xmlns="http://activemq.apache.org/schema/core"
