@@ -1,25 +1,36 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.hevelian</groupId>
-  <artifactId>com.hevelian.activemq</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
-  <name>ActiveMQ in Tomcat</name>
-  <description>Runs ActiveMQ embedded in WAR file in Tomcat</description>
-  
-  	<properties>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.hevelian.activemq</groupId>
+	<artifactId>activemq-parent</artifactId>
+	<version>0.0.3-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>ActiveMQ Broker in Tomcat - Parent</name>
+	<description>Aggregation POM for modules of ActiveMQ Broker in Tomcat</description>
+
+	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<product.name>Hevelian ActiveMQ</product.name>
-		<maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
-
-		<spring.version>4.2.6.RELEASE</spring.version>
-		<spring-security.version>4.1.1.RELEASE</spring-security.version>
-		<spring.data.version>1.9.4.RELEASE</spring.data.version>
-		<log4j.version>2.5</log4j.version>		
+		<activemq.version>5.14.5</activemq.version>
+		<slf4j.version>1.7.13</slf4j.version>
+		<spring.version>4.1.9.RELEASE</spring.version>
 	</properties>
-  
+
+	<dependencies>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+	</dependencies>
+
 	<build>
-		<finalName>hevelian-activemq</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -33,34 +44,8 @@
 		</plugins>
 	</build>
 
-  <dependencies>
-    	<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>3.1.0</version>
-			<scope>provided</scope>
-		</dependency>
-		
-	<!-- https://mvnrepository.com/artifact/org.apache.activemq/activemq-broker -->
-		<dependency>
-		    <groupId>org.apache.activemq</groupId>
-		    <artifactId>activemq-broker</artifactId>
-		    <version>5.14.5</version>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.apache.activemq/activemq-kahadb-store -->
-		<dependency>
-		    <groupId>org.apache.activemq</groupId>
-		    <artifactId>activemq-kahadb-store</artifactId>
-		    <version>5.14.5</version>
-		</dependency>
-
-		<!-- logging -->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
-
-  </dependencies>
+	<modules>
+		<module>activemq-core</module>
+		<module>activemq-webapp</module>
+	</modules>
 </project>

@@ -1,0 +1,88 @@
+<!-- The big part of this file is taken from the official ActiveMQ Broker 
+	config. Some comments are preserved. -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://activemq.apache.org/schema/core
+	http://activemq.apache.org/schema/core/activemq-core.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+	<!-- Allows us to use system properties, JNDI properties, init parameters, 
+		etc. as variables in this configuration file. It reads default properties 
+		and the ones from the specified location hevelian.config.path. By default 
+		the hevelian.config.path points to default properties as well but can be 
+		overridden by user. If the path does not exist - an exception will be thrown. -->
+	<context:property-placeholder
+		location="classpath:defaults.properties, ${hevelian.config.path}" />
+
+	<!-- The <broker> element is used to configure the ActiveMQ broker. -->
+	<broker xmlns="http://activemq.apache.org/schema/core"
+		brokerName="${activemq.broker.name}" dataDirectory="${activemq.data}"
+		useJmx="${activemq.broker.useJmx}">
+
+		<destinationPolicy>
+			<policyMap>
+				<policyEntries>
+					<policyEntry topic=">">
+						<!-- The constantPendingMessageLimitStrategy is used to prevent slow 
+							topic consumers to block producers and affect other consumers by limiting 
+							the number of messages that are retained For more information, see: http://activemq.apache.org/slow-consumer-handling.html -->
+						<pendingMessageLimitStrategy>
+							<constantPendingMessageLimitStrategy
+								limit="1000" />
+						</pendingMessageLimitStrategy>
+					</policyEntry>
+				</policyEntries>
+			</policyMap>
+		</destinationPolicy>
+
+
+		<!-- The managementContext is used to configure how ActiveMQ is exposed 
+			in JMX. By default, ActiveMQ uses the MBean server that is started by the 
+			JVM. For more information, see: http://activemq.apache.org/jmx.html -->
+		<managementContext>
+			<managementContext connectorPort="${activemq.broker.jmx.port}" />
+		</managementContext>
+
+		<!-- Configure message persistence for the broker. The default persistence 
+			mechanism is the KahaDB store (identified by the kahaDB tag). For more information, 
+			see: http://activemq.apache.org/persistence.html -->
+		<persistenceAdapter>
+			<kahaDB directory="${activemq.data}/kahadb" />
+		</persistenceAdapter>
+
+
+		<!-- The systemUsage controls the maximum amount of space the broker will 
+			use before disabling caching and/or slowing down producers. For more information, 
+			see: http://activemq.apache.org/producer-flow-control.html -->
+		<systemUsage>
+			<systemUsage>
+				<memoryUsage>
+					<memoryUsage percentOfJvmHeap="70" />
+				</memoryUsage>
+				<storeUsage>
+					<storeUsage limit="100 gb" />
+				</storeUsage>
+				<tempUsage>
+					<tempUsage limit="50 gb" />
+				</tempUsage>
+			</systemUsage>
+		</systemUsage>
+
+		<!-- The transport connectors expose ActiveMQ over a given protocol to 
+			clients and other brokers. For more information, see: http://activemq.apache.org/configuring-transports.html -->
+		<transportConnectors>
+			<!-- DOS protection, limit concurrent connections to 1000 and frame size 
+				to 100MB -->
+			<transportConnector name="openwire"
+				uri="tcp://0.0.0.0:${activemq.broker.tcp.port}?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600" />
+		</transportConnectors>
+
+		<!-- destroy the spring context on shutdown. Closes XBeanBrokerFactory. -->
+		<shutdownHooks>
+			<bean xmlns="http://www.springframework.org/schema/beans" class="org.apache.activemq.hooks.SpringContextHook" />
+		</shutdownHooks>
+	</broker>
+</beans>

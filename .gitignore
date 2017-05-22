@@ -1,2 +1,15 @@
-/target/
-/Users/
+.classpath
+.project
+.settings/*
+target/*
+
+activemq-core/.classpath
+activemq-core/. project
+activemq-core/.settings/*
+activemq-core/target/*
+
+activemq-webapp/.classpath
+activemq-webapp/. project
+activemq-webapp/.settings/*
+activemq-webapp/target/*
+
