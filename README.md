@@ -17,7 +17,7 @@ Two artifact will be generated:
 `{version}` is equal to the version of ActiveMQ (plus **-SNAPSHOT** in case of snapshot builds).
 
 ## Run
-Just deploy activemq-webapp-`{version}`.war to Tomcat and this is it. The application provides an advanced mechanism for configuration customizations, so if something is missing - find instructions below for any extensions. For the most complex cases - activemq-core-`{version}`.jar provides an absttraction to build your own web application with custom broker initialization logic.
+Just deploy activemq-webapp-`{version}`.war to Tomcat and this is it. The application provides an advanced mechanism for configuration customizations, so if something is missing - find instructions below for any extensions. For the most complex cases - activemq-core-`{version}`.jar provides an abstraction to build your own web application with custom broker initialization logic.
 
 ### Default
 In case the war is deployed and no any additional configuration is specified - the default one will be used:
@@ -55,17 +55,7 @@ To change the [default](https://github.com/Hevelian/hevelian-activemq/blob/maste
 -Dlog4j.configuration=file:///Users/myuser/activemq/logging/log4j.properties
 ```
 
-//TODO review
-To run:
+License
+----
 
-1. Set the location to broker configuration file. Sample: -Dactivemq.conf.brokerURI=xbean:file:///Users/myuser/activemq/conf/activemq.xml More info at http://activemq.apache.org/xml-configuration.html
-
-2. Set the location to ActiveMQ data folder in case it is referenced by placeholder from configuration file. Sample: -Dactivemq.data=/Users/myuser/activemq/data
-
-3. Add necessary ActiveMQ libraries to Tomcat classpath. Edit the common.loader property at conf/catalina.properties. Sample: common.loader="${catalina.base}/lib","${catalina.base}/lib/.jar","${catalina.home}/lib","${catalina.home}/lib/.jar","${activemq.home}/lib/.jar","${activemq.home}/lib/optional/.jar"
-
-NOTE: the set of libraries depends on the type and content of configuration file. Only several libraries are mandatory. List to be provided soon.
-
-4. Edit the broker configuration file. Remove ws transport connector, import of jetty.xml. In case the activemq.conf placeholder is used - set it's value via a system property.
-
-5. Set the logging config file location. Sample: -Dlog4j.configuration=file:///Users/myuser/activemq/logging/log4j.properties
+[Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0)
