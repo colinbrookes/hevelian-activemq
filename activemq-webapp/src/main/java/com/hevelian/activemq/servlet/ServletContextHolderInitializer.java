@@ -3,6 +3,13 @@ package com.hevelian.activemq.servlet;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+/**
+ * Servlet Context listener that stores current Servlet Context instance to a
+ * {@link ServletContextHolder}.
+ * 
+ * @author yflyud
+ *
+ */
 public class ServletContextHolderInitializer implements ServletContextListener {
 
 	@Override
@@ -12,6 +19,6 @@ public class ServletContextHolderInitializer implements ServletContextListener {
 
 	@Override
 	public void contextDestroyed(ServletContextEvent sce) {
-		// Do nothing
+		ServletContextHolder.removeServletContext();
 	}
 }

@@ -13,6 +13,14 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import com.hevelian.activemq.support.ReversePropertySourcesStandardServletEnvironment;
 
+/**
+ * Implementation of {@link WebBrokerInitializer} abstraction that defines a
+ * logic of {@link BrokerService} instance creation. The {@link BrokerService}
+ * bean is defined by xbean location at {@value #BROKER_URI_PROP}.
+ * 
+ * @author yflyud
+ *
+ */
 public class WebBrokerInitializerImpl extends WebBrokerInitializer {
 	private static final String BROKER_URI_PROP = "activemq.conf.brokerURI";
 	private static final Logger LOG = LoggerFactory.getLogger(WebBrokerInitializerImpl.class);
@@ -20,6 +28,8 @@ public class WebBrokerInitializerImpl extends WebBrokerInitializer {
 	@Override
 	// TODO throw corresponding exceptions, not just Exception instances.
 	protected BrokerService createBroker(ServletContext sc) throws Exception {
+		// Initialize Web environment to make Spring resolve external
+		// properties.
 		StandardServletEnvironment standardServletEnvironment = new ReversePropertySourcesStandardServletEnvironment();
 		WebApplicationContextUtils.initServletPropertySources(standardServletEnvironment.getPropertySources(), sc);
 
