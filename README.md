@@ -3,7 +3,7 @@
 # hevelian-activemq
 
 **Enterprise class software for the rest of us!**
-Run Apache ActiveMQ as a WAR deployment in Tomcat and reduce the number of processes you need to start up.
+Run Apache ActiveMQ Broker as a WAR deployment in Tomcat and reduce the number of processes you need to start up.
 ## Build
 Build project with a simple Maven command from the root folder:
 ```sh
@@ -18,6 +18,8 @@ Two artifact will be generated:
 
 ## Run
 Just deploy activemq-webapp-`{version}`.war to Tomcat and this is it. The application provides an advanced mechanism for configuration customizations, so if something is missing - find instructions below for any extensions. For the most complex cases - activemq-core-`{version}`.jar provides an abstraction to build your own web application with custom broker initialization logic.
+
+> The Web Application just starts the ActiveMQ Broker. It does not start any UI to interact with the queues. This is planned for the next releases, but for now any third party tools can be used.
 
 ### Default
 In case the war is deployed and no any additional configuration is specified - the default one will be used:
