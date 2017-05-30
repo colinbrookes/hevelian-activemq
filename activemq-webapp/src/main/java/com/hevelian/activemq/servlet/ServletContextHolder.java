@@ -9,8 +9,11 @@ import javax.servlet.ServletContext;
  * @author yflyud
  *
  */
-public class ServletContextHolder {
+public final class ServletContextHolder {
 	private static ServletContext servletContext;
+
+	private ServletContextHolder() {
+	}
 
 	public static synchronized void setServletContext(ServletContext sc) {
 		if (servletContext != null) {
@@ -27,6 +30,10 @@ public class ServletContextHolder {
 			throw new IllegalStateException("Servlet context is not set.");
 		}
 		servletContext = null;
+	}
+
+	public static boolean isServletContextSet() {
+		return servletContext != null;
 	}
 
 	public static ServletContext getServletContext() {
