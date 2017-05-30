@@ -58,4 +58,4 @@ To change the [default](https://github.com/Hevelian/hevelian-activemq/blob/maste
 License
 ----
 
-[Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0)
+[Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0)
