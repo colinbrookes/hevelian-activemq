@@ -44,7 +44,16 @@ Specify custom properties in a separate configuration properties file. This appr
 
 ### Advanced
 This kind of configuration requires a basic knowledge of [Spring](https://spring.io) and [Schema based configuration](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/xsd-configuration.html). The idea is to overwrite a [default](https://github.com/Hevelian/hevelian-activemq/blob/master/activemq-webapp/src/main/resources/activemq.xml) Broker bean configuration file from the classpath with your own one. To specify a different file - set an `activemq.conf.brokerURI` property to point to your own xml with bean config.
+For example:
+```sh
+-Dactivemq.conf.brokerURI=xbean:file:///Users/myuser/activemq/conf/activemq.xml
+```
+More info at http://activemq.apache.org/xml-configuration.html
 
+To change the [default](https://github.com/Hevelian/hevelian-activemq/blob/master/activemq-webapp/src/main/resources/log4j.properties) logging configuration - set the custom [Log4J](http://logging.apache.org/log4j/1.2/) config file location. E.g.
+```sh
+-Dlog4j.configuration=file:///Users/myuser/activemq/logging/log4j.properties
+```
 
 //TODO review
 To run:
