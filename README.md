@@ -40,7 +40,7 @@ Default properties can be overwritten in multiple ways:
 The overwrite order is the same as defined.
 
 ### Native
-Specify custom properties in a separate configuration file. This approach is native since we have a single properties file for all Hevelian products for centralized configuration. The path to the configuration file can be defined through the property: `hevelian.config.path` same way as any other properties (see the previous section for details).
+Specify custom properties in a separate configuration properties file. This approach is native since we have a single properties file for all Hevelian products for centralized configuration. The path to the configuration file can be defined through the property: `hevelian.config.path` same way as any other properties (see the previous section for details).
 
 ### Advanced
 This kind of configuration requires a basic knowledge of [Spring](https://spring.io) and [Schema based configuration](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/xsd-configuration.html). The idea is to overwrite a [default](https://github.com/Hevelian/hevelian-activemq/blob/master/activemq-webapp/src/main/resources/activemq.xml) Broker bean configuration file from the classpath with your own one. To specify a different file - set an `activemq.conf.brokerURI` property to point to your own xml with bean config.
