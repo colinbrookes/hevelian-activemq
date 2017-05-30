@@ -17,15 +17,36 @@ Two artifact will be generated:
 `{version}` is equal to the version of ActiveMQ (plus **-SNAPSHOT** in case of snapshot builds).
 
 ## Run
-//TODO
-> activemq-core can be used with any other version of [activemq-broker](https://mvnrepository.com/artifact/org.apache.activemq/activemq-broker) dependency if the API of BrokerService is the same.
+Just deploy activemq-webapp-`{version}`.war to Tomcat and this is it. The application provides an advanced mechanism for configuration customizations, so if something is missing - find instructions below for any extensions. For the most complex cases - activemq-core-`{version}`.jar provides an absttraction to build your own web application with custom broker initialization logic.
 
-Build the activemq-webapp module as a war. Deploy it to Tomcat and run! The ActiveMQ broker will be started with default configuration: activemq.data = ${user.home}/hevelian/activemq/data activemq.broker.name = Hevelian activemq.broker.useJmx = true activemq.broker.jmx.port = 1099 activemq.broker.tcp.port = 61616
+### Default
+In case the war is deployed and no any additional configuration is specified - the default one will be used:
 
-To overwrite the properties - point the Broker to the properties file using JNDI or system property "hevelian.config.path". Context init param could be used as well in the global web.xml. Sample: -Dhevelian.config.path=/path/to/hevelian.properties
+| Property| Description | Value|
+| ------ | ------ | ------ |
+| activemq.data | Location of ActiveMQ data folder| ${user.home}/hevelian/activemq/data |
+| activemq.broker.name | ActiveMQ Broker name| Hevelian |
+| activemq.broker.useJmx | Use JMX connector| true |
+| activemq.broker.jmx.port | JMX connector port. Only if JMX connector is ennabled| 1099 |
+| activemq.broker.tcp.port | TCP connector port| 61616 |
 
-//TODO - next are the previous instructions for super advanced usage. Part of it should stay. Will be revisited soon.
+### Customized
+Default properties can be overwritten in multiple ways:
+1. ServletContext init parameters (that is, web.xml context-param entries)
+2. JNDI properties
+3. System properties
+4. Environment variables
 
+The overwrite order is the same as defined.
+
+### Native
+Specify custom properties in a separate configuration file. This approach is native since we have a single properties file for all Hevelian products for centralized configuration. The path to the configuration file can be defined through the property: `hevelian.config.path` same way as any other properties (see the previous section for details).
+
+### Advanced
+This kind of configuration requires a basic knowledge of [Spring](https://spring.io) and [Schema based configuration](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/xsd-configuration.html). The idea is to overwrite a [default](https://github.com/Hevelian/hevelian-activemq/blob/master/activemq-webapp/src/main/resources/activemq.xml) Broker bean configuration file from the classpath with your own one. To specify a different file - set an `activemq.conf.brokerURI` property to point to your own xml with bean config.
+
+
+//TODO review
 To run:
 
 1. Set the location to broker configuration file. Sample: -Dactivemq.conf.brokerURI=xbean:file:///Users/myuser/activemq/conf/activemq.xml More info at http://activemq.apache.org/xml-configuration.html
