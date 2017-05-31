@@ -25,6 +25,11 @@ public class ServletContextHolderInitializer implements ServletContextListener {
 
 	@Override
 	public void contextDestroyed(ServletContextEvent sce) {
+		if (!sce.getServletContext().equals(ServletContextHolder.getServletContext()))
+			throw new IllegalStateException(String.format(
+					"Unable to remove current Servlet Context from Holder. Context being destroyed '%s' and Context in a Holder '%s' do not match.",
+					sce.getServletContext().getServletContextName(),
+					ServletContextHolder.getServletContext().getServletContextName()));
 		ServletContextHolder.removeServletContext();
 		LOG.debug("Current Servlet Context is set to null");
 
