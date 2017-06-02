@@ -13,6 +13,13 @@
 			<version>${activemq.version}</version>
 			<scope>provided</scope>
 		</dependency>
+		<!-- Tests -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${slf4j.version}</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<parent>
