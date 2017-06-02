@@ -6,13 +6,13 @@ import static org.junit.Assert.assertTrue;
 
 import javax.servlet.ServletContext;
 
-import org.junit.Before;
+import org.junit.After;
 import org.junit.Test;
 import org.mockito.Mockito;
 
 public class ServletContextHolderTest {
 
-	@Before
+	@After
 	public void clearServletContextHolder() {
 		if (ServletContextHolder.isServletContextSet())
 			ServletContextHolder.removeServletContext();
