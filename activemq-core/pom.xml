@@ -6,6 +6,10 @@
 	<name>ActiveMQ Broker in Tomcat - Core</name>
 	<description>Core module for ActiveMQ Broker embedded in WAR file in Tomcat</description>
 
+	<properties>
+		<maven.deploy.skip>false</maven.deploy.skip>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.activemq</groupId>
