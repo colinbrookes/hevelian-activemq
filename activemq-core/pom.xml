@@ -8,6 +8,7 @@
 
 	<properties>
 		<maven.deploy.skip>false</maven.deploy.skip>
+		<skipNexusStagingDeployMojo>false</skipNexusStagingDeployMojo>
 	</properties>
 
 	<dependencies>
