@@ -52,6 +52,11 @@
 		<slf4j.version>1.7.13</slf4j.version>
 		<spring.version>4.1.9.RELEASE</spring.version>
 		<maven.deploy.skip>true</maven.deploy.skip>
+		<!-- 
+			this property prevents the Nexus Staging Maven Plugin to
+			deploy this module's artifacts to Maven Central' staging repo
+		 -->
+		<skipNexusStagingDeployMojo>true</skipNexusStagingDeployMojo>
 	</properties>
 
 	<dependencies>
