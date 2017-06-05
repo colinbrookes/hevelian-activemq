@@ -15,4 +15,5 @@ deploy:
     skip_cleanup: true
     on:
       repo: Hevelian/hevelian-activemq
+      branch: 5.14.5
       jdk: oraclejdk8
