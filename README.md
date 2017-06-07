@@ -16,6 +16,41 @@ Two artifact will be generated:
 
 `{version}` is equal to the version of ActiveMQ (plus **-SNAPSHOT** in case of snapshot builds).
 
+## Maven
+Released version of the activemq-core module is available in the Maven Central Repository. Just add this artifact to your project:  
+*Maven*
+```xml
+<dependency>
+    <groupId>com.hevelian.activemq</groupId>
+    <artifactId>activemq-core</artifactId>
+    <version>5.14.5</version>
+</dependency>
+```
+*Gradle*
+```groovy
+compile group: 'com.hevelian.activemq', name: 'activemq-core', version: '5.14.5'
+```
+However if you want to use the last snapshot version, you have to add the Sonatype OSS repository:  
+*Maven*
+```xml
+<repository>
+    <id>sonatype-oss-snapshot</id>
+    <name>Sonatype OSS repository for snapshots</name>
+    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    <snapshots>
+        <enabled>true</enabled>
+    </snapshots>
+</repository>
+```
+*Gradle*
+```groovy
+repositories {
+  maven {
+    url 'https://oss.sonatype.org/content/repositories/snapshots'
+  }
+}
+```
+
 ## Run
 Just deploy activemq-webapp-`{version}`.war to Tomcat and this is it. The application provides an advanced mechanism for configuration customizations, so if something is missing - find instructions below for any extensions. For the most complex cases - activemq-core-`{version}`.jar provides an abstraction to build your own web application with custom broker initialization logic.
 
